@@ -1,0 +1,122 @@
+// What is an Event?
+
+// An event is an action that happens in the browser.
+
+// Example:
+
+// A user clicks a button
+
+// A page finishes loading
+
+// A key is pressed
+
+// Mouse moves over an element
+
+// JavaScript can listen to these events and react to them.
+
+// 2. Common Events in JavaScript
+// Event Name	Triggered When...
+// onclick	User clicks an element
+// ondblclick	User double-clicks an element
+// onmouseover	Mouse pointer moves over an element
+// onmouseout	Mouse pointer leaves an element
+// onkeydown	Key is pressed down
+// onkeyup	Key is released
+// onchange	Value of input changes
+// onfocus	Input field is focused
+// onblur	Input field loses focus
+// onload	Page/image finishes loading
+// onsubmit	Form is submitted
+// 3. Ways to Handle Events
+// (a) Inline HTML Event
+
+
+  <div>
+    <button onclick="alert('Hello Snehal!')">Click Me</button>
+    {/* (b) Using JavaScript Property */}
+    <button id="btn">Click Me</button>
+  </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("btn").onclick = function() {
+    alert("Button was clicked!");
+  };
+});
+</script>
+
+(c) Using addEventListener (Best Way ✅)
+<button id="btn">Click Me</button>
+
+<script>
+let btn = document.getElementById("btn");
+btn.addEventListener("click", function() {
+  alert("Hello Snehal, this is addEventListener!");
+});
+</script>
+
+// 4. Event Object
+
+// Every event handler gets an event object with details about the event.
+
+<button id="btn">Click Me</button>
+
+<script>
+document.getElementById("btn").addEventListener("click", function(event) {
+  console.log("Event type:", event.type); // click
+  console.log("X:", event.clientX, "Y:", event.clientY); // mouse position
+});
+</script>
+
+// 5. Keyboard Events
+<input type="text" id="name">
+
+<script>
+let input = document.getElementById("name");
+
+input.addEventListener("keydown", function() {
+  console.log("Key Pressed!");
+});
+
+input.addEventListener("keyup", function() {
+  console.log("Key Released!");
+});
+</script>
+
+6. Form Events
+<form id="myForm">
+  <input type="text" name="username" required>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Stop page reload
+  alert("Form Submitted!");
+});
+</script>
+
+7. Mouse Events Example
+<div id="box" style="width:100px; height:100px; background:lightblue;"></div>
+
+<script>
+let box = document.getElementById("box");
+
+box.addEventListener("mouseover", () => {
+  box.style.background = "green";
+});
+
+box.addEventListener("mouseout", () => {
+  box.style.background = "lightblue";
+});
+</script>
+
+8. Event Bubbling vs Capturing
+
+Bubbling (default): Event goes from child → parent → document.
+
+Capturing: Event goes from parent → child.
+
+element.addEventListener("click", handler, true);  // capturing
+element.addEventListener("click", handler, false); // bubbling
