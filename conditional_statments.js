@@ -7,41 +7,37 @@
 // Used to run a block of code only if a condition is true.
 
 
-let age = 20;
+// let age = 20;
 
-if (age >= 18) {
-  console.log("You are eligible to vote.");
-}
+// if (age >= 18) {
+//   console.log("You are eligible to vote.");
+// }
 
 // (b) if...else Statement
 
 // Used when we want to check two conditions (true or false).
 
 
-let age2 = 16;
+// const age = 10;
 
-if (age2 >= 18) {
-  console.log("You can vote.");
-} else {
-  console.log("You cannot vote.");
-}
+// if (age >= 18) {
+//   console.log("you can vote");
+// } 
+// else {
+//   console.log("You cannot vote.");
+// }
 
 // (c) if...else if...else Statement
 
 // Used when we need to check multiple conditions.
 
+// marks = 80
 
-let marks = 72;
-
-if (marks >= 90) {
-  console.log("Grade: A");
-} else if (marks >= 75) {
-  console.log("Grade: B");
-} else if (marks >= 50) {
-  console.log("Grade: C");
-} else {
-  console.log("Grade: Fail");
-}
+// if (marks >= 90){
+//   console.log("O")
+// }else if(marks<90 & marks>=70){
+//   console.log("A")
+// }
 
 // (d) switch Statement
 
@@ -50,15 +46,23 @@ if (marks >= 90) {
 // Compares one value against multiple cases.
 
 
-let day = 3;
+let a = 3;
+let b = 3;
+let operator = "*"
+switch (operator) {
+  case "+":
+     console.log(a+b);
+      break;
+  case 2:
+     console.log(a-b);
+      break;
+  case "*": 
+    console.log(a*b);
+   break;
+  case 4:
+     console.log(a/b); 
+     break;
 
-switch (day) {
-  case 1: console.log("Monday"); break;
-  case 2: console.log("Tuesday"); break;
-  case 3: console.log("Wednesday"); break;
-  case 4: console.log("Thursday"); break;
-  case 5: console.log("Friday"); break;
-  case 6: console.log("Saturday"); break;
-  case 7: console.log("Sunday"); break;
-  default: console.log("Invalid day");
+  default: 
+    console.log("Invalid day");
 }

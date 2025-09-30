@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #94e1fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #d8b0b0;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+    }
+
+
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name">
+        <small class="error" id="nameError"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <small class="error" id="emailError"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+        <small class="error" id="passError"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Re-enter your password">
+        <small class="error" id="confirmPassError"></small>
+      </div>
+
+      <button type="submit">Register</button>
+      <p class="success" id="successMsg"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // Prevent page refresh
+
+  let fullname = document.getElementById("fullname").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+  let nameError = document.getElementById("nameError");
+  let emailError = document.getElementById("emailError");
+  let passError = document.getElementById("passError");
+  let confirmPassError = document.getElementById("confirmPassError");
+
+  let isValid = true;
+
+
+
+  // Full name validation
+  if (fullname === "") {
+    nameError.innerText = "Full name is required";
+    isValid = false;
+  }
+
+  // Email validation
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (email === "") {
+    emailError.innerText = "Email is required";
+    isValid = false;
+  } else if (!email.match(emailPattern)) {
+    emailError.innerText = "Enter a valid email";
+    isValid = false;
+  }
+
+  // Password validation
+  if (password.length < 6) {
+    passError.innerText = "Password must be at least 6 characters";
+    isValid = false;
+  }
+
+  // Confirm password
+  if (confirmPassword !== password) {
+    confirmPassError.innerText = "Passwords do not match";
+    isValid = false;
+  }
+
+  // If all valid
+  if (isValid) {
+    alert("Thank you  Registration Successful!");  // <-- Popup message
+    form.reset(); // Clear form fields
+  }
+    // Reset errors
+  nameError.innerText = "";
+  emailError.innerText = "";
+  passError.innerText = "";
+  confirmPassError.innerText = "";
+});
+
+  </script>
+
+</body>
+</html>
